@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+
+  if(toDoList.listItems)
+    ul
+      each listItem in toDoList.listItems
+        li=listItem.title
+
+  form(action="/addListItem", method="post")
+      input(type="text", name="title")
+      input(type="hidden",name="id",value=toDoList._id)
+      input(type="submit", value="add")

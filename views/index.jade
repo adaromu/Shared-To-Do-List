@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+
+  ul
+    each toDoList in toDoLists
+      li: a(href="/list?id="+toDoList._id)= toDoList.title
+
+  form(action="/addList", method="post")
+    input(type="text", name="title")
+    input(type="submit", value="add")
